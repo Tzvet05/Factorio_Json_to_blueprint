@@ -17,7 +17,7 @@ bool	blueprint_compress(t_parr* dst, t_parr* src)
 			EXECUTABLE_NAME, LIB_ZLIB, FUNC_ZLIB_DEFLATEINIT, ERROR_ZLIB_DEFLATEINIT);
 		return (1);
 	}
-	uint8_t*	buffer = malloc(CHUNK_SIZE * src->obj_size);
+	uint8_t*	buffer = malloc(CHUNK_SIZE);
 	if (buffer == NULL)
 	{
 		fprintf(stderr, "%s: %s: %s: %s\n",
@@ -25,13 +25,14 @@ bool	blueprint_compress(t_parr* dst, t_parr* src)
 		deflateEnd(&stream);
 		return (1);
 	}
-	size_t	len_input;
+	size_t	len_input, i_input = 0;
 	int32_t	flush;
 	t_parr*	parr;
 	t_lst*	output = NULL;
 	do
 	{
-		len_input = MIN(src->len * src->obj_size, CHUNK_SIZE);
+		len_input = MIN(src->len * src->obj_size - i_input, CHUNK_SIZE);
+		i_input += len_input;
 		stream.avail_in = (uint32_t)len_input;
 		if (len_input < CHUNK_SIZE)
 			flush = Z_FINISH;
