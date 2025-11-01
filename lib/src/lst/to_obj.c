@@ -1,10 +1,10 @@
 #include <stddef.h>
 #include "lst.h"
 
-bool	lst_to_obj(void* dst, t_lst* lst, size_t (*get_len)(void*), size_t (*get_size)(void*),
+bool	lst_to_obj(void *dst, t_lst *lst, size_t (*get_len)(void*), size_t (*get_size)(void*),
 	bool (*alloc)(void*, size_t, size_t), void (*cpy)(void*, void*, size_t, size_t, size_t))
 {
-	t_lst*	lst_head = lst;
+	t_lst	*lst_head = lst;
 	size_t	len = 0;
 	while (lst != NULL)
 	{

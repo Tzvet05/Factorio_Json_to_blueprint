@@ -8,7 +8,7 @@
 
 // Zlib
 #define COMPRESSION_LEVEL	9
-#define CHUNK_SIZE		262144
+#define CHUNK_SIZE		(1 << 18)
 
 /* ----- TYPES DECLARATIONS ----- */
 

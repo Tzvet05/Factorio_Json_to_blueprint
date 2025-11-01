@@ -4,13 +4,13 @@
 #include "base64.h"
 #include "libblueprint.h"
 
-char*	blueprint_json_to_string(char* json)
+char	*blueprint_json_to_string(char *json)
 {
 	t_parr	compressed, uncompressed = (t_parr){.len = strlen(json), .obj_size = sizeof(*json),
 		.arr = json};
 	if (blueprint_compress(&compressed, &uncompressed) == 1)
 		return (NULL);
-	char*	blueprint_string = blueprint_base64(&compressed);
+	char	*blueprint_string = blueprint_base64(&compressed);
 	parr_clear(&compressed, NULL);
 	return (blueprint_string);
 }

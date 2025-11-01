@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include "parr.h"
 
-void	parr_clear(t_parr* parr, void (*del)(void*))
+void	parr_clear(t_parr *parr, void (*del)(void*))
 {
 	if (del != NULL)
 	{
-		uint8_t*	ptr = parr->arr;
+		uint8_t	*ptr = parr->arr;
 		for (size_t i = 0; i < parr->len; i++)
 		{
 			del(ptr);

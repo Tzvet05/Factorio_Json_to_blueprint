@@ -42,7 +42,7 @@ The prototypes of all the exported functions are included in the `libblueprint.h
 The file contains the following prototypes :
 
 ```c
-char*	blueprint_json_to_string(char* json);
+char	*blueprint_json_to_string(char *json);
 ```
 Description :
 
@@ -53,4 +53,9 @@ Arguments :
 
 Return value :
 - A C-style, null-terminated string (the Factorio blueprint string)
-- A NULL pointer (if an error occured)
+- A `NULL` pointer (if an error occured)
+
+## CREDITS
+
+A special thanks to the contributors of :
+- [cJSON](https://github.com/DaveGamble/cJSON) - Used for the parsing and building of Json objects
