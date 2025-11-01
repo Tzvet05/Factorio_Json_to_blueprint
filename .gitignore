@@ -1,0 +1,9 @@
+blueprint
+obj/
+TODO
+*.out
+*.a
+*.so
+*.swp
+*.o
+.nfs*
