@@ -10,5 +10,7 @@ char*	blueprint_json_to_string(char* json)
 		.arr = json};
 	if (blueprint_compress(&compressed, &uncompressed) == 1)
 		return (NULL);
-	return (blueprint_base64(&compressed));
+	char*	blueprint_string = blueprint_base64(&compressed);
+	parr_clear(&compressed, NULL);
+	return (blueprint_string);
 }

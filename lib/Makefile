@@ -32,6 +32,7 @@ SRC =	$(DIR_LST)new_back.c \
 	$(DIR_LST)to_obj.c \
 	$(DIR_LST)clear.c \
 	$(DIR_PAR)utils.c \
+	$(DIR_PAR)clear.c \
 	$(DIR_PAR)free.c
 
 # Compiled objects

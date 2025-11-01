@@ -26,5 +26,5 @@ bool	parr_alloc_arr(void* parr, size_t len, size_t size)
 
 void	parr_copy_arr(void* parr, void* src, size_t i_start, size_t len, size_t size)
 {
-	memcpy((uint8_t *)((t_parr *)parr)->arr + i_start * size, src, len * size);
+	memcpy((uint8_t *)((t_parr *)parr)->arr + i_start * size, ((t_parr *)src)->arr, len * size);
 }
