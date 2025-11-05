@@ -2,8 +2,8 @@
 
 /* ----- MACROS ----- */
 
-#define API_EXPORT	__attribute__((visibility("default")))
+#define LIB_EXPORT	__attribute__((visibility("default")))
 
 /* ----- PROTOTYPES ----- */
 
-API_EXPORT char	*blueprint_json_to_string(char *json);
+LIB_EXPORT char	*blueprint_json_to_string(const char *json);

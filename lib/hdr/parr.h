@@ -2,7 +2,6 @@
 
 /* ----- INCLUDES ----- */
 
-#include <stddef.h>
 #include <stdbool.h>
 
 /* ----- STRUCTURES ----- */
@@ -18,7 +17,7 @@ typedef struct parr
 /* ----- PROTOTYPES ----- */
 
 // parr/
-//	utils.c
+//	tools.c
 size_t	parr_get_len(void *parr);
 size_t	parr_get_size(void *parr);
 bool	parr_alloc_arr(void *parr, size_t len, size_t size);

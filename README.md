@@ -2,7 +2,7 @@
 
 Dynamic library that converts a C-style string into a compressed, pastable C-style string.
 
-This is useful for Factorio blueprint creation, as it can convert a string containing a Json Factorio blueprint object into a pastable blueprint string that can be directly imported in-game.
+This is useful for Factorio blueprint creation, as it can convert a string containing a Json Factorio blueprint item into a pastable blueprint string that can be directly imported in-game.
 
 ## SETUP
 
@@ -33,23 +33,24 @@ make
 ## USAGE
 
 The compiled dynamic library is named `libblueprint.so` and is located at the root of the repository.
+
 Its associated header (for function prototypes) is named `libblueprint.h` and is located at `include/libblueprint.h`.
 
-### Prototypes
+### Prototype
 
-The prototypes of all the exported functions are included in the `libblueprint.h` header file.
+The prototype of the exported function is included in the `libblueprint.h` header file.
 
-The file contains the following prototypes :
+The file contains the following prototype :
 
 ```c
-char	*blueprint_json_to_string(char *json);
+char	*blueprint_json_to_string(const char *json);
 ```
 Description :
 
-This function converts a Json Factorio blueprint into a pastable Factorio blueprint string
+This function converts a Json Factorio blueprint into a Factorio blueprint string
 
 Arguments :
-- A C-style, null-terminated string (the Json Factorio blueprint object)
+- A C-style, null-terminated string (the Json Factorio blueprint item)
 
 Return value :
 - A C-style, null-terminated string (the Factorio blueprint string)

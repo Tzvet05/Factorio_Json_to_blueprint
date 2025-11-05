@@ -2,7 +2,7 @@
 
 NAME =		libblueprint.a
 
-COMP =		clang
+CC =		clang
 
 CFLAGS =	-Wall -Wextra -Wconversion -Wpedantic
 
@@ -31,7 +31,7 @@ HDR =	$(DIR_HDR)
 SRC =	$(DIR_LST)new_back.c \
 	$(DIR_LST)to_obj.c \
 	$(DIR_LST)clear.c \
-	$(DIR_PAR)utils.c \
+	$(DIR_PAR)tools.c \
 	$(DIR_PAR)clear.c \
 	$(DIR_PAR)free.c
 
@@ -47,7 +47,7 @@ $(NAME) : $(OBJ)
 
 $(DIR_OBJ)%.o : $(DIR_SRC)%.c
 	@ mkdir -p $(dir $@)
-	@ $(COMP) $(CFLAGS) $(addprefix -I,$(HDR)) -c $^ -o $@
+	@ $(CC) $(CFLAGS) $(addprefix -I,$(HDR)) -c $^ -o $@
 
 # Rules
 

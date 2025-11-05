@@ -2,7 +2,7 @@
 
 NAME =		libblueprint.so
 
-COMP =		clang
+CC =		clang
 
 LIB_BLUEPRINT =	blueprint
 LIB_ZLIB =	z
@@ -61,12 +61,12 @@ OBJ = $(addprefix $(DIR_OBJ), $(SRC:.c=.o))
 # Compilation
 
 $(NAME) : $(OBJ) $(NAME_LIB_BLUEPRINT) $(NAME_LIB_ZLIB) $(NAME_LIB_BASE64)
-	@ $(COMP) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $(NAME)
+	@ $(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $(NAME)
 	@ echo "$(COLOR_WHITE)[$(NAME)] - $(COLOR_GREEN)Dynamic library ($(NAME)) compiled.$(COLOR_DEFAULT)"
 
 $(DIR_OBJ)%.o : $(DIR_SRC)%.c
 	@ mkdir -p $(dir $@)
-	@ $(COMP) $(CFLAGS) $(addprefix -I,$(HDR)) -c $^ -o $@
+	@ $(CC) $(CFLAGS) $(addprefix -I,$(HDR)) -c $^ -o $@
 
 # Libraries
 
