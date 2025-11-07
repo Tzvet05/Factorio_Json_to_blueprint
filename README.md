@@ -81,4 +81,5 @@ Return value :
 ## CREDITS
 
 A special thanks to the contributors of :
-- [cJSON](https://github.com/DaveGamble/cJSON) - Used for the parsing and building of Json objects
+- [zlib](https://github.com/madler/zlib) - Used to compress the Json blueprint object
+- [base64](https://github.com/aklomp/base64) - Used to make the compressed Json blueprint object copyable
