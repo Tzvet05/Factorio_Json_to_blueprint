@@ -1,6 +1,7 @@
 blueprint
 obj/
 TODO
+string.txt
 *.out
 *.a
 *.so
