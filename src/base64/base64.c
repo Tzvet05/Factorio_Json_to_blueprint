@@ -13,8 +13,8 @@ char	*blueprint_base64(t_parr *src)
 		+ BASE64_MARGIN_ENCODE);
 	if (blueprint_string == NULL)
 	{
-		fprintf(stderr, "%s: %s: %s: %s\n",
-			EXECUTABLE_NAME, LIB_LIBC, FUNC_MALLOC, ERROR_FAILED_ALLOC);
+		fprintf(stderr, "%s: %s: %s: %s: %s\n",
+			EXECUTABLE_NAME, ERROR_FUNCTION, LIB_LIBC, FUNC_MALLOC, ERROR_ALLOC);
 		return (NULL);
 	}
 	memcpy(blueprint_string, BLUEPRINT_STRING_HEAD, len_head);

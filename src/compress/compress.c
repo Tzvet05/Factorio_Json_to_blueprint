@@ -13,15 +13,16 @@ bool	blueprint_compress(t_parr *dst, t_parr *src)
 	z_stream	stream = (z_stream){.zalloc = Z_NULL, .zfree = Z_NULL, .opaque = Z_NULL};
 	if (deflateInit(&stream, COMPRESSION_LEVEL) != Z_OK)
 	{
-		fprintf(stderr, "%s: %s: %s: %s\n",
-			EXECUTABLE_NAME, LIB_ZLIB, FUNC_ZLIB_DEFLATEINIT, ERROR_ZLIB_DEFLATEINIT);
+		fprintf(stderr, "%s: %s: %s: %s: %s\n",
+			EXECUTABLE_NAME, ERROR_FUNCTION, LIB_ZLIB, FUNC_ZLIB_DEFLATEINIT,
+			ERROR_ZLIB_DEFLATEINIT);
 		return (1);
 	}
 	uint8_t	*buffer = malloc(CHUNK_SIZE);
 	if (buffer == NULL)
 	{
-		fprintf(stderr, "%s: %s: %s: %s\n",
-			EXECUTABLE_NAME, LIB_LIBC, FUNC_MALLOC, ERROR_FAILED_ALLOC);
+		fprintf(stderr, "%s: %s: %s: %s: %s\n",
+			EXECUTABLE_NAME, ERROR_FUNCTION, LIB_LIBC, FUNC_MALLOC, ERROR_ALLOC);
 		deflateEnd(&stream);
 		return (1);
 	}
@@ -45,9 +46,9 @@ bool	blueprint_compress(t_parr *dst, t_parr *src)
 			stream.next_out = buffer;
 			if (deflate(&stream, flush) == Z_STREAM_ERROR)
 			{
-				fprintf(stderr, "%s: %s: %s: %s\n",
-					EXECUTABLE_NAME, LIB_ZLIB, FUNC_ZLIB_DEFLATE,
-					ERROR_ZLIB_DEFLATE);
+				fprintf(stderr, "%s: %s: %s: %s: %s\n",
+					EXECUTABLE_NAME, ERROR_FUNCTION, LIB_ZLIB,
+					FUNC_ZLIB_DEFLATE, ERROR_ZLIB_DEFLATE);
 				deflateEnd(&stream);
 				free(buffer);
 				lst_clear(&output, parr_free);
@@ -56,8 +57,9 @@ bool	blueprint_compress(t_parr *dst, t_parr *src)
 			parr = malloc(sizeof(t_parr));
 			if (parr == NULL)
 			{
-				fprintf(stderr, "%s: %s: %s: %s\n",
-					EXECUTABLE_NAME, LIB_LIBC, FUNC_MALLOC, ERROR_FAILED_ALLOC);
+				fprintf(stderr, "%s: %s: %s: %s: %s\n",
+					EXECUTABLE_NAME, ERROR_FUNCTION, LIB_LIBC, FUNC_MALLOC,
+					ERROR_ALLOC);
 				deflateEnd(&stream);
 				free(buffer);
 				lst_clear(&output, parr_free);
@@ -68,8 +70,9 @@ bool	blueprint_compress(t_parr *dst, t_parr *src)
 			parr->arr = malloc(parr->len * parr->obj_size);
 			if (parr->arr == NULL)
 			{
-				fprintf(stderr, "%s: %s: %s: %s\n",
-					EXECUTABLE_NAME, LIB_LIBC, FUNC_MALLOC, ERROR_FAILED_ALLOC);
+				fprintf(stderr, "%s: %s: %s: %s: %s\n",
+					EXECUTABLE_NAME, ERROR_FUNCTION, LIB_LIBC, FUNC_MALLOC,
+					ERROR_ALLOC);
 				deflateEnd(&stream);
 				parr_free(parr);
 				free(buffer);
@@ -79,8 +82,9 @@ bool	blueprint_compress(t_parr *dst, t_parr *src)
 			memcpy(parr->arr, buffer, parr->len * parr->obj_size);
 			if (lst_new_back(&output, parr) == 1)
 			{
-				fprintf(stderr, "%s: %s: %s: %s\n",
-					EXECUTABLE_NAME, LIB_LIBC, FUNC_MALLOC, ERROR_FAILED_ALLOC);
+				fprintf(stderr, "%s: %s: %s: %s: %s\n",
+					EXECUTABLE_NAME, ERROR_FUNCTION, LIB_LIBC, FUNC_MALLOC,
+					ERROR_ALLOC);
 				deflateEnd(&stream);
 				parr_free(parr);
 				free(buffer);
@@ -97,7 +101,7 @@ bool	blueprint_compress(t_parr *dst, t_parr *src)
 		parr_copy_arr);
 	lst_clear(&output, parr_free);
 	if (error == 1)
-		fprintf(stderr, "%s: %s: %s: %s\n",
-			EXECUTABLE_NAME, LIB_LIBC, FUNC_MALLOC, ERROR_FAILED_ALLOC);
+		fprintf(stderr, "%s: %s: %s: %s: %s\n",
+			EXECUTABLE_NAME, ERROR_FUNCTION, LIB_LIBC, FUNC_MALLOC, ERROR_ALLOC);
 	return (error);
 }
