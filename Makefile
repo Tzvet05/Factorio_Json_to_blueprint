@@ -1,7 +1,6 @@
 # Compilation parameters
 
 NAME_EXE :=	blueprint
-
 NAME_LIB :=	lib$(NAME_EXE).so
 
 CC :=	clang
@@ -15,7 +14,7 @@ NAME_LIB_ZLIB :=	lib$(LIB_ZLIB).so
 NAME_LIB_BASE64 :=	lib$(LIB_BASE64).o
 
 CFLAGS =	-Wall -Wextra -Wconversion -Wpedantic
-LDFLAGS =	-L$(DIR_LIB_BLUEPRINT) -L$(DIR_LIB_ZLIB)$(DIR_BUILD) -Wl,-rpath,$(DIR_LIB_ZLIB)$(DIR_BUILD)
+LDFLAGS =	-Wl,-Bsymbolic -L$(DIR_LIB_BLUEPRINT) -L$(DIR_LIB_ZLIB)$(DIR_BUILD) -Wl,-rpath,$(DIR_LIB_ZLIB)$(DIR_BUILD)
 LDLIBS =	-l$(LIB_BLUEPRINT) -l$(LIB_ZLIB) $(DIR_LIB_BASE64)$(DIR_LIB)$(NAME_LIB_BASE64)
 
 CFLAGS_LIB =	-fPIC -fvisibility=hidden
