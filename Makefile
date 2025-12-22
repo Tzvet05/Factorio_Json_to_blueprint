@@ -14,11 +14,11 @@ NAME_LIB_ZLIB :=	lib$(LIB_ZLIB).so
 NAME_LIB_BASE64 :=	lib$(LIB_BASE64).o
 
 CFLAGS =	-Wall -Wextra -Wconversion -Wpedantic
-LDFLAGS =	-Wl,-Bsymbolic -L$(DIR_LIB_BLUEPRINT) -L$(DIR_LIB_ZLIB)$(DIR_BUILD) -Wl,-rpath,$(DIR_LIB_ZLIB)$(DIR_BUILD)
+LDFLAGS =	-L$(DIR_LIB_BLUEPRINT) -L$(DIR_LIB_ZLIB)$(DIR_BUILD) -Wl,-rpath,$(DIR_LIB_ZLIB)$(DIR_BUILD)
 LDLIBS =	-l$(LIB_BLUEPRINT) -l$(LIB_ZLIB) $(DIR_LIB_BASE64)$(DIR_LIB)$(NAME_LIB_BASE64)
 
 CFLAGS_LIB =	-fPIC -fvisibility=hidden
-LDFLAGS_LIB =	-shared
+LDFLAGS_LIB =	-Bsymbolic -shared
 
 # Directories
 
