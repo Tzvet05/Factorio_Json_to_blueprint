@@ -8,3 +8,4 @@ string.txt
 *.swp
 *.o
 .nfs*
+build/
